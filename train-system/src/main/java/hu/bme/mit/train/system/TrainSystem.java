@@ -20,7 +20,7 @@ public class TrainSystem {
 	Runnable task = () -> {
 		controller.followSpeed();
 	};
-	public startExecution(){
+	public void startExecution(){
 		executor.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
 	}
 

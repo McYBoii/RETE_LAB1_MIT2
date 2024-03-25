@@ -8,7 +8,6 @@ public class TrainControllerImpl implements TrainController {
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
 	private boolean em_break = false;
-	private int joystickPosition = getJoystickPosition();
 
 	@Override
 	public void followSpeed() {
@@ -18,15 +17,11 @@ public class TrainControllerImpl implements TrainController {
 			if (referenceSpeed < 0) {
 				referenceSpeed = 0;
 			} else {
-				if(joystickPosition > 0){
-					if(referenceSpeed+step < speedLimit) {
-						referenceSpeed += step;
-					}else{
-						referenceSpeed = speedLimit;
-					}
-				}else if(joystickPosition < 0){
-					referenceSpeed -= step;
-				}
+			    if(referenceSpeed+step > 0) {
+            	    referenceSpeed += step;
+            	} else {
+		    	    referenceSpeed = 0;
+            	}
 			}
 		}
 		enforceSpeedLimit();
