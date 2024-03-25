@@ -50,10 +50,12 @@ public class TrainControllerImpl implements TrainController {
 		if(em_break){
 			this.step = 0;
 		}else{
-			this.step = joystickPosition;	
+			this.step = joystickPosition;
+			
 		}
 	}
 	public void setEm_Break(boolean em_break){
 		this.em_break = em_break;
 	}
 }
+
