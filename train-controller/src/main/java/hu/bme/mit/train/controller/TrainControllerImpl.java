@@ -13,7 +13,7 @@ public class TrainControllerImpl implements TrainController {
 	public void followSpeed() {
 		if(em_break){
 			referenceSpeed = 0;
-		}else if(step!=0){
+		}else{
 			if (referenceSpeed < 0) {
 				referenceSpeed = 0;
 			} else {
