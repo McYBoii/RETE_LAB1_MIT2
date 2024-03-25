@@ -7,6 +7,10 @@ import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.sensor.TrainSensorImpl;
 import hu.bme.mit.train.user.TrainUserImpl;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 public class TrainSystem {
 
 	private TrainController controller = new TrainControllerImpl();
@@ -24,5 +28,16 @@ public class TrainSystem {
 	public TrainUser getUser() {
 		return user;
 	}
+
+	ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+
+	Runnable task = () -> {
+		controller.followSpeed();
+	};
+	public void startExecution(){
+		executor.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
+	}
+
+
 
 }
