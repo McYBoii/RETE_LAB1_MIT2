@@ -13,7 +13,7 @@ public class TrainControllerImpl implements TrainController {
 	public void followSpeed() {
 		if(em_break){
 			referenceSpeed = 0;
-		}else{
+		}else if(step!=0){
 			if (referenceSpeed < 0) {
 				referenceSpeed = 0;
 			} else {
@@ -51,9 +51,6 @@ public class TrainControllerImpl implements TrainController {
 			this.step = 0;
 		}else{
 			this.step = joystickPosition;	
-		}
-		if(joystickPosition != 0){
-			followSpeed();
 		}
 	}
 	public void setEm_Break(boolean em_break){
