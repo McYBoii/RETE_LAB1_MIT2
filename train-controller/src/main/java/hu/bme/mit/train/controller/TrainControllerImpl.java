@@ -8,6 +8,7 @@ public class TrainControllerImpl implements TrainController {
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
 	private boolean em_break = false;
+	private int joystickPosition = getJoystickPosition();
 
 	@Override
 	public void followSpeed() {
@@ -63,22 +64,3 @@ public class TrainControllerImpl implements TrainController {
 	}
 }
 
-public class MyScheduler {
-
-    // Define your task (replace the code inside run() with your desired functionality)
-    private static Runnable task = () -> {
-        System.out.println("Hello, world!"); // Example: Print "Hello, world!" every second
-    };
-
-    public static void startScheduler() {
-        // Create a single-threaded executor
-        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-
-        // Schedule the task to run every 1 second
-        executor.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
-
-        // Clean up the executor when your program exits
-        // (important to prevent resource leaks)
-        executor.shutdown();
-    }
-}
