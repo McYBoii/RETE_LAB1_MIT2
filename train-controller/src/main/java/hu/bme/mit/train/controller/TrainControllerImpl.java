@@ -52,6 +52,9 @@ public class TrainControllerImpl implements TrainController {
 		}else{
 			this.step = joystickPosition;	
 		}
+		if(joystickPosition != 0){
+			followSpeed();
+		}
 	}
 	public void setEm_Break(boolean em_break){
 		this.em_break = em_break;
